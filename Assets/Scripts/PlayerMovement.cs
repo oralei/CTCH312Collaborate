@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,8 +12,10 @@ public class PlayerMovement : MonoBehaviour
     // Dash Variables
     public bool isDashing = false;
     public Vector3 dashDirection;
-    public float dashSpeed;
-    public float dashDuration;
+    public float dashSpeed = 0.1f;
+    public float dashDuration = 0.2f;
+    public float dashDistance = 0.3f;
+    private float dashElapsedTime;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -70,6 +74,8 @@ public class PlayerMovement : MonoBehaviour
         if (isDashing == false)
         {
             isDashing = true;
+            dashElapsedTime = 0f;
+            dashElapsedTime += Time.deltaTime;
 
             if (agent.hasPath == true)
             {
@@ -79,18 +85,42 @@ public class PlayerMovement : MonoBehaviour
                 agent.isStopped = true;
             }
 
+            // Note here that this variable is a Vector3 that gets mouseposition and turns it into world position
             dashDirection = lineLengthController.worldPosition;
 
             Vector3 direction = dashDirection - transform.position;
             direction.y = 0; // Ignore vertical difference
+
             if (direction != Vector3.zero)
             {
                 transform.rotation = Quaternion.LookRotation(direction);
             }
 
-            isDashing = false;
-            agent.updateRotation = false;
-            agent.isStopped = false;
+            StartCoroutine(PerformDash());
         }
+    }
+
+    private IEnumerator PerformDash()
+    {
+        Vector3 startPosition = transform.position;
+        Vector3 dashEnd = transform.position + transform.forward * dashDistance;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < dashDuration)
+        {
+            float progress = elapsedTime / dashDuration;
+            transform.position = Vector3.Lerp(startPosition, dashEnd, progress);
+
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+
+        // Ensure the player reaches the exact end position
+        transform.position = dashEnd;
+
+        // End dash
+        isDashing = false;
+        agent.updateRotation = false;
+        agent.isStopped = false;
     }
 }

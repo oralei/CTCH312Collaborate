@@ -1962,6 +1962,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mCamera: {fileID: 411112420}
   agent: {fileID: 548900235}
+  lineLengthController: {fileID: 435311816}
+  isDashing: 0
+  dashDirection: {x: 0, y: 0, z: 0}
+  dashSpeed: 20
+  dashDuration: 0.34
+  dashDistance: 3.5
 --- !u!195 &548900235
 NavMeshAgent:
   m_ObjectHideFlags: 0
