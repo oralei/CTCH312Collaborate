@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: World
-  m_Shader: {fileID: -6465566751694194690, guid: e4526db9781d24f4aaf97f549d3faf19, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 824725ea9a9c26c4a8db2b1add772154, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -37,6 +37,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - MainTex:
+        m_Texture: {fileID: 2800000, guid: f793e0a81d498454e8579c4999c08ab1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Mask_R_Emission:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -85,12 +93,20 @@ Material:
         m_Texture: {fileID: 2800000, guid: 3c905b75866ef594d98bdbb0dd9537ed, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_ba0e5636babe49f490e3af7573c2c641_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 3c905b75866ef594d98bdbb0dd9537ed, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
         m_Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2D:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -107,9 +123,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - Brightness_Rim: 2.09
+    - Rim_Power: 4.72
+    - Toon_Ramp_Offset: 0.343
+    - Toon_Ramp_Smoothness: 0
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _Ambient: 0.94
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -125,26 +146,28 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Max: 5.96
+    - _Max: 8.21
     - _Metallic: 0
-    - _Min: 2.12
+    - _Min: 1.46
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _ShadeSize: 0.27
+    - _ShadeSize: 0.29
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _Toon_Ramp_Offset_Point: 0.5
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
-    - _Color: {r: 0.17888926, g: 0.18238525, b: 0.18867922, a: 1}
+    - Toon_Ramp_Tint: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
     - _ColorDark: {r: 0.7058823, g: 0, b: 0.21568623, a: 0}
     - _ColorLight: {r: 0.9921569, g: 0.36078426, b: 0.25882348, a: 0}
     - _DarkColour: {r: 0, g: 0.030817604, b: 0.16037738, a: 0}

@@ -35,6 +35,11 @@ public class PlayerMovement : MonoBehaviour
         {
             DodgeRoll();
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            abilityQ();
+        }
     }
 
     public void Move()
@@ -123,4 +128,39 @@ public class PlayerMovement : MonoBehaviour
         agent.updateRotation = false;
         agent.isStopped = false;
     }
+
+    void abilityQ()
+    {
+        if (isDashing == false)
+        {
+            isDashing = true;
+            dashElapsedTime = 0f;
+            dashElapsedTime += Time.deltaTime;
+
+            if (agent.hasPath == true)
+            {
+                agent.updateRotation = true;
+                agent.velocity = Vector3.zero;
+                agent.ResetPath();
+                agent.isStopped = true;
+            }
+
+            // Note here that this variable is a Vector3 that gets mouseposition and turns it into world position
+            dashDirection = lineLengthController.worldPosition;
+
+            Vector3 direction = dashDirection - transform.position;
+            direction.y = 0; // Ignore vertical difference
+
+            if (direction != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(direction);
+            }
+
+            // allow movement
+            isDashing = false;
+            agent.updateRotation = false;
+            agent.isStopped = false;
+        }
+    }
 }
+
