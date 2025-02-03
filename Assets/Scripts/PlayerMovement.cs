@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Camera mCamera;
     public NavMeshAgent agent;
     public LineLengthController lineLengthController;
+    public Animator animator;
 
     // Dash Variables
     public bool isDashing = false;
@@ -39,6 +40,18 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             abilityQ();
+        }
+
+        // Check the agent's velocity to determine if it's moving
+        if (agent.velocity.magnitude > 0.1f && agent.remainingDistance > agent.stoppingDistance)
+        {
+            // Switch to "Running" state
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            // Switch to "Idle" state
+            animator.SetBool("isRunning", false);
         }
     }
 
